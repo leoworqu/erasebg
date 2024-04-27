@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-logo">
+      <img src="your_logo.png" alt="Logo">
+    </div>
+    <div class="navbar-options">
+      <a href="{{url_for('bgremove')}}">Background Remover AI</a>
+      <a href="{{url_for('bgremoveURL')}}">BG Remover for URL</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+    </div>
+  </div>
+  {% block content %}{% endblock %}
+</body>
+</html>

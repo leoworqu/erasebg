@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container">
+    <form id="uploadForm" method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div for="image" class="image-container">
+        <label class="label-container">
+          {{ form.image.label(class="lable") }}
+        </label>
+        
+        {{ form.image(class="form-image") }}
+        {% if form.image.errors %}
+          {% for error in form.image.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="submit_field">
+        {{ form.submit(class="form-submit") }}
+      </div>
+      
+
+    <div class="gallery" id="gallery">
+      <div class="uploaded-images">
+        {% for image in uploaded_images %}
+          <img src="{{ image }}" alt="Uploaded Image">
+        {% endfor %}
+      </div>
+      <div class="bg-removed-images">
+        {% for removed_image in bg_removed_images %}
+          <img src="{{ removed_image }}" alt="BG Removed image">
+        {% endfor %}
+      </div>
+      {% if bg_removed_filename %}
+        <a class="download-link" href="{{ url_for('download_bg_removed', filename=bg_removed_filename) }}">Download Background Removed Image</a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% endblock %}
